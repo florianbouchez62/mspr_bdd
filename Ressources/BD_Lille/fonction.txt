@@ -1,0 +1,5 @@
+1;chauffeur
+2;secrétaire
+3;commercial
+4;directeur
+5;contrôleur

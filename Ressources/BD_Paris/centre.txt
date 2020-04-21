@@ -1,0 +1,5 @@
+;Centre Bourdin;23;rue des Accassias;95800;Jouy-le-Moutier
+;Prorecycle;218;Avenue des ponts;75019;Paris
+;Revie;56;allée des Sycomores;94400;Vitry-sur-Seine
+;Deuxième Vie;36;rue des grands espoirs;94490;Ivry
+;Neo;78;Boulevard Jourdan;95000;Cergy

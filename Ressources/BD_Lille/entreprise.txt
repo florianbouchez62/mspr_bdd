@@ -1,0 +1,10 @@
+123451320010012;Decathlon;25;Avenue Watrelos;59650;Villeneuve;0339275236;M Vanderelst
+024565590120057;Castorama;15;Rue des plages;59175;Templemars;0336215879;M Didire
+345655671230029;Toyota Motor;120;rue des Mirails;59264;Onnaing;0356879321;Mme Crespin
+123487583650015;Dalkia France;45;Boulevard Marchand;59350;Saint André les Lille;0356865871;Mme Dreschler
+056483328350015;Selarl Despagne Maes;36;Rue des pyramides;59000;Lille;0356766821;M Despadre
+125879255760011;Lunginnov;36;Rue dix bars;59000;Lille;0355676354;M Attaf
+564712357860012;Yassin Attof;44;Avenue Marx Dormoy;59000;Lille;0356246387;M Yassin Attof
+546258732150011;Le moulin meunier;15;Rue de Tournai;59000;Lille;0365322522;M Meunier
+235463322450016;Eole;61;Avenue du peuple Belge;59800;Lille;0323543325;M Duperche
+554821876540036;Armel;22;Place des Reignaux;59800;Lille;0331256484;M Yakamoz

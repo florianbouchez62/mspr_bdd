@@ -1,0 +1,8 @@
+;Centre Mercan;23;rue des champs;59800;Lille
+;Prorecycle;14;Chemin de la frontière;59800;Lille
+;Objrecycl;123;Avenue Marcadet;59800;Lille
+;Triselec;5;3ieme avenue;59000;Loos
+;Acremat;253;Avenue de Leeds;59777;Lille
+;Galloo;6;rue Courtois;59000;Lille
+;Picavet;51;rue Moulin Cardon;59910;Bondues
+;Castel;29;rue Laon;59200;Tourcoing

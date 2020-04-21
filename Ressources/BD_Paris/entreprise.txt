@@ -1,0 +1,15 @@
+12345678900001;Energym;10;Boulevard de Pontoise;95000;Pontoise;0134205236;Mme servant
+23456789010002;La clé des champs;18;Rue des Nouvelles;95490;Vauréal;0135615879;M Fourdan
+34567890120003;Formalys;145;rue des Allouettes;78000;Saint Germain;0136579321;M Cresdon
+48334367900013;Cartoooche;84;avenue de la République;75011;Paris;0135201895;M Dun
+39116278100044;Propack;140;rue du faubourg Saint Honoré;75008;Paris;0135206598;M Corall
+38221444300014;Mavick;32;rue du Général Beuret;75015;Paris;0136548790;M Dravick
+38310924600025;Aqualia;26;rue Nicolai;7512;Paris;0135659875;M Brilat
+33041607400038;Perenco;7;rue de logelbach;75017;Paris;0135879632;Mme Vandenberck
+41167102700059;Caroil;51;rue Anjou;75008;Paris;0135647562;M Durand
+38238166300014;Atelier Joel;135;Boulevard de Sebastopol;75002;Paris;0136546874;M Fractur
+33364631300010;Ciambelli;12;rue Dauphine;75006;Paris;0135213258;M Dactibne
+41392116400013;Antada;3;rue du colonel Moll;75017;Paris;0134542655;M Martin
+42382805200013;AJLC;18;rue Saint Ferdinand;75017;Paris;0135213265;Mme Lutin
+38248452500037;Tyfatou;103;rue de Rennes;75006;Paris;0135213658;M Detallis
+38219696200064;Arkanorum;27;rue de Linne;75005;Paris;0134206741;Mme Lorginel

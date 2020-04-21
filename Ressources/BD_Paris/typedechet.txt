@@ -1,0 +1,12 @@
+;Papier;0
+;Verre;1
+;Plastique;0
+;Luminaires;1
+;Piles;2
+;Encre;0
+;Métal;0
+;Déchets verts;0
+;Gravats;0
+;Appareils électriques;2
+;Huile et peinture;5
+;Aérosols;5

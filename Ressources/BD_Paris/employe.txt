@@ -1,0 +1,7 @@
+;Dupond;Marc;18/01/1970;25/12/2003;1300;chauffeur
+;Larby;Antoine;22/03/1979;12/05/2005;1500;chauffeur
+;Zevallos;Juliana;05/07/1980;30/03/1999;2000;secrétaire
+;Randal;Didier;11/11/1975;25/02/2000;1500;chauffeur
+;Delhaye;Marcus;14/12/1968;31/07/2000;1550;chauffeur
+;Simon;Daniel;29/03/1962;16/07/2004;2000;directeur
+;Anders;Marie-Laure;16/06/1968;26/09/2001;1900;contrôleur
