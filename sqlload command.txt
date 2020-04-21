@@ -1,1 +1,0 @@
-sqlldr rlille/rlille@//217.182.171.102:1521/XEPDB1 control=c:\load\tournee.ctl log=c:\load\tournee.log

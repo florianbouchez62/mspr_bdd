@@ -1,13 +1,44 @@
-connect system/xe
+-- ==================
+-- Création tablespace et user RPARIS, sur SQLPlus (se connecter en SYSDBA)
+-- ==================
 
-drop user rparis cascade;
+-- Montre les tablespaces existants
+-- ==================
+select tablespace_name from dba_tablespaces;
 
-create user rparis identified by rparis
-default tablespace users;
+-- Création de la tablespace RPARIS
+-- ==================
+create tablespace rparis_tablespace
+datafile 'rparis_tablespace.dat'
+size 10M autoextend on;
 
-grant connect, resource to rparis;
+-- Création de la tablespace temporaire RPARIS
+-- ==================
+create temporary tablespace rparis_tablespace_temp
+tempfile 'rparis_tablespace_temp.dat'
+size 5M autoextend on;
 
-connect rparis/rparis
+-- Création de l'utilisateur RPARIS
+-- ==================
+create user rparis
+identified by rparis
+default tablespace rparis_tablespace
+temporary tablespace rparis_tablespace_temp;
+
+-- Attribution des privilèges
+-- ==================
+grant create session to rparis;
+grant create table to rparis;
+grant create sequence to rparis;
+grant unlimited tablespace to rparis;
+
+-- Visualiser les privilèges de l'utilisateur (se connecter en RPARIS)
+-- ==================
+select * from session_privs;
+
+-- ==================
+-- Création des tables et séquences
+-- ==================
 
 -- les tables sans FK
 -- ==================
@@ -109,12 +140,12 @@ constraint FK_detaildep_centre foreign key (NoCentre) references centretraitemen
 );
 
 
--- cr�ation de s�quences
+-- cr�ation de s�quences
 create sequence seq_typedechet start with 1 increment by 1;
 create sequence seq_centre start with 1 increment by 1;
 create sequence seq_employe start with 1 increment by 1;
 create sequence seq_tournee start with 1 increment by 1;
 create sequence seq_demande start with 1 increment by 1;
 
-
-
+-- Exemple d'importation des données (placer les fichiers dans c:\load)
+-- sqlldr rparis/rparis@//217.182.171.102:1521/XEPDB1 control=c:\load\tournee.ctl log=c:\load\tournee.log

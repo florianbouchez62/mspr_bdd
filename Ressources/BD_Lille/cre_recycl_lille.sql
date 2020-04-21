@@ -1,13 +1,44 @@
-connect system/xe
+-- ==================
+-- Création tablespace et user RLILLE, sur SQLPlus (se connecter en SYSDBA)
+-- ==================
 
-drop user rlille cascade;
+-- Montre les tablespaces existants
+-- ==================
+select tablespace_name from dba_tablespaces;
 
-create user rlille identified by rlille
-default tablespace users;
+-- Création de la tablespace RLILLE
+-- ==================
+create tablespace rlille_tablespace
+datafile 'rlille_tablespace.dat'
+size 10M autoextend on;
 
-grant connect, resource to rlille;
+-- Création de la tablespace temporaire RLILLE
+-- ==================
+create temporary tablespace rlille_tablespace_temp
+tempfile 'rlille_tablespace_temp.dat'
+size 5M autoextend on;
 
-connect rlille/rlille
+-- Création de l'utilisateur RLILLE
+-- ==================
+create user rlille
+identified by rlille
+default tablespace rlille_tablespace
+temporary tablespace rlille_tablespace_temp;
+
+-- Attribution des privilèges
+-- ==================
+grant create session to rlille;
+grant create table to rlille;
+grant create sequence to rlille;
+grant unlimited tablespace to rlille;
+
+-- Visualiser les privilèges de l'utilisateur (se connecter en RLILLE)
+-- ==================
+select * from session_privs;
+
+-- ==================
+-- Création des tables et séquences
+-- ==================
 
 -- les tables sans FK
 -- ==================
@@ -123,12 +154,15 @@ constraint FK_detaildep_centre foreign key (NoCentre) references centretraitemen
 );
 
 
--- cr�ation de s�quences
+-- cr�ation de s�quences
 create sequence seq_typedechet start with 1 increment by 1;
 create sequence seq_centre start with 1 increment by 1;
 create sequence seq_employe start with 1 increment by 1;
 create sequence seq_tournee start with 1 increment by 1;
 create sequence seq_demande start with 1 increment by 1;
+
+-- Exemple d'importation des données (placer les fichiers dans c:\load)
+-- sqlldr rlille/rlille@//217.182.171.102:1521/XEPDB1 control=c:\load\tournee.ctl log=c:\load\tournee.log
 
 
 

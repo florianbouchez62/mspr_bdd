@@ -1,3 +1,16 @@
+-- ==============
+-- Suppression de l'utilisateur & tablespace (SYSDBA only, attention les données sont supprimées)
+-- ==============
+
+drop tablespace rlille_tablespace including contents;
+drop tablespace rlille_tablespace_temp including contents;
+drop user rlille;
+
+
+-- ==============
+-- Suppression des tables et séquences
+-- ==============
+
 DROP SEQUENCE SEQ_CENTRE;
 DROP SEQUENCE SEQ_DEMANDE;
 DROP SEQUENCE SEQ_EMPLOYE;
