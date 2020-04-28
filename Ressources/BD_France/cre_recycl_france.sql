@@ -32,6 +32,29 @@ grant create table to rfrance;
 grant create sequence to rfrance;
 grant unlimited tablespace to rfrance;
 
+
+-- Accès aux tables RLILLE, RPARIS
+grant select on rlille.CAMION to rfrance;
+grant select on rlille.CENTRETRAITEMENT to rfrance;
+grant select on rlille.DEMANDE to rfrance;
+grant select on rlille.DETAILDEMANDE to rfrance;
+grant select on rlille.DETAILDEPOT to rfrance;
+grant select on rlille.EMPLOYE to rfrance;
+grant select on rlille.ENTREPRISE to rfrance;
+grant select on rlille.FONCTION to rfrance;
+grant select on rlille.TOURNEE to rfrance;
+grant select on rlille.TYPEDECHET to rfrance;
+
+grant select on rparis.CAMION to rfrance;
+grant select on rparis.CENTRETRAITEMENT to rfrance;
+grant select on rparis.DEMANDE to rfrance;
+grant select on rparis.DETAILDEMANDE to rfrance;
+grant select on rparis.DETAILDEPOT to rfrance;
+grant select on rparis.EMPLOYE to rfrance;
+grant select on rparis.ENTREPRISE to rfrance;
+grant select on rparis.TOURNEE to rfrance;
+grant select on rparis.TYPEDECHET to rfrance;
+
 -- Visualiser les privilèges de l'utilisateur (se connecter en RFRANCE)
 -- ==================
 select * from session_privs;
@@ -146,6 +169,7 @@ constraint FK_demande_nosite foreign key (NoSite) references  site(NoSite)
 create table detaildemande
 (QuantiteEnlevee	 number(3) not null,
 NoDemande		 number(6) not null,
+Remarque varchar(100) null,
 NoTypeDechet		 number(3) not null,
 constraint PK_detaildemande primary key(Nodemande, notypedechet),
 constraint FK_detaildem_demande foreign key (NoDemande) references demande(NoDemande),
