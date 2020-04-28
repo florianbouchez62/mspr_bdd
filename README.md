@@ -6,7 +6,8 @@ Florian Bouchez - Lucas Lemaire - Dylan Rousselle - Fabien Kiecken - Maxime Arbo
 ## Liste des tâches 
 - Création des bases de données Lille & Paris -> **OK**
 - Importation des données dans les deux bases -> **OK**
-- Mise en place de la nouvelle base de données -> *En cours*
+- (1) Mise en place de la nouvelle base de données -> **OK**
+- (1) Regroupement des données sur la nouvelle base -> **OK**
 - Utilisation de la base de données pour la gestion de l'activité -> *En cours*
 - Automatisation des actions -> *En cours*
 - Administration de la base de données -> *En cours*
