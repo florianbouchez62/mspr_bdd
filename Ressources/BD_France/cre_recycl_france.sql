@@ -30,6 +30,8 @@ temporary tablespace rfrance_tablespace_temp;
 grant create session to rfrance;
 grant create table to rfrance;
 grant create sequence to rfrance;
+grant create procedure to rfrance;
+grant create trigger to rfrance;
 grant unlimited tablespace to rfrance;
 
 
