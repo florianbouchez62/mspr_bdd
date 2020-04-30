@@ -97,6 +97,10 @@ create table typedechet
 (NoTypeDechet	 number(3) not null,
 NomTypeDechet	 varchar(50),
 Niv_danger	 number(1),
+MaxVolumeForfaitaire varchar(20) null,
+TarifForfaitaire number(8,2) null,
+VolumeLot varchar(20) null,
+TarifLot number(8,2) null,
 constraint PK_typedechet primary key(Notypedechet)
 );
 
@@ -133,6 +137,7 @@ create table camion
 DateAchat	 date,
 Modele 		 varchar(50) not null,
 Marque		 varchar(50) not null,
+MaxEnlevements number(2) default 5 not null,
 NoSite number(3),
 constraint PK_camion primary key(NoImmatric),
 constraint FK_camion_site foreign key (nosite) references site(nosite)
