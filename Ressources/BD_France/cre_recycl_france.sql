@@ -29,6 +29,7 @@ temporary tablespace rfrance_tablespace_temp;
 -- ==================
 grant create session to rfrance;
 grant create table to rfrance;
+grant create view to rfrance;
 grant create sequence to rfrance;
 grant create procedure to rfrance;
 grant create trigger to rfrance;
@@ -167,6 +168,18 @@ constraint PK_demande primary key(Nodemande),
 constraint FK_demande_entreprise foreign key (Siret) references entreprise(Siret),
 constraint FK_demande_tournee foreign key (notournee) references tournee(notournee),
 constraint FK_demande_nosite foreign key (NoSite) references  site(NoSite)
+);
+
+create table demandenontraitee
+(NoDemande number(6) not null,
+DateDemande date,
+DateEnlevement date,
+Web_O_N char(1),
+Siret number(15) not null,
+NoSite number(3) not null,
+constraint PK_demande_non_traitee primary key (Nodemande),
+constraint FK_demande_non_traitee_entreprise foreign key (Siret) references entreprise(Siret),
+constraint FK_demande_nosite foreign key (NoSite) references site(NoSite)
 );
 
 
