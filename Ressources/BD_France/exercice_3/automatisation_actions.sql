@@ -188,3 +188,50 @@ END;
 ----------------------------------------------------------------------------------------------
 
 -- Trigger
+CREATE OR REPLACE TRIGGER VERIF_QTE_DEPOSEE BEFORE INSERT ON DETAILDEPOT FOR EACH ROW
+    DECLARE
+        v_qtedeposee INTEGER := :new.QUANTITEDEPOSEE;
+        v_max_quantite_deposable INTEGER := QUANTITE_RESTANTE_A_DEPOSER_TYPE_TOURNEE(:new.NOTOURNEE, :new.NOTYPEDECHET);
+    BEGIN
+        IF v_qtedeposee > v_max_quantite_deposable THEN
+            raise_application_error(-20001, 'Dépôt impossible, la quantité déposée dépasse la quantité enlevée restante de la tournée pour ce type de déchet.');
+        ELSE
+            DBMS_OUTPUT.PUT_LINE('Le dépôt a bien été pris en compte');
+        END IF;
+    END;
+
+-- Dépendances du trigger
+
+---- Fonction retournant la quantité totale enlevée pour un type de déchet sur une tournée
+CREATE OR REPLACE FUNCTION QUANTITE_ENLEVEE_TYPE_TOURNEE(NUMTOURNEE INTEGER, NUMTYPEDECHET INTEGER) RETURN INTEGER AS
+    CURSOR c_enlevements IS
+        SELECT DETAILDEMANDE.QUANTITEENLEVEE AS QTE
+        FROM DETAILDEMANDE
+            JOIN DEMANDE ON DEMANDE.NODEMANDE = DETAILDEMANDE.NODEMANDE
+        WHERE DEMANDE.NOTOURNEE = NUMTOURNEE
+            AND DETAILDEMANDE.NOTYPEDECHET = NUMTYPEDECHET;
+    v_quantite INTEGER := 0;
+    BEGIN
+       FOR enlevement IN c_enlevements
+           LOOP
+               v_quantite := v_quantite + enlevement.QTE;
+           END LOOP;
+       RETURN v_quantite;
+    END;
+
+---- Fonction retournant la quantité restante à déposer pour un type de déchet sur une tournée
+---- (différence entre la quantité totale enlevée moins la quantité totale déposée sur un centre)
+CREATE OR REPLACE FUNCTION QUANTITE_RESTANTE_A_DEPOSER_TYPE_TOURNEE(NUMTOURNEE INTEGER, NUMTYPEDECHET INTEGER) RETURN INTEGER AS
+    CURSOR c_depots IS
+        SELECT DETAILDEPOT.QUANTITEDEPOSEE AS QTE
+        FROM DETAILDEPOT
+        WHERE DETAILDEPOT.NOTOURNEE = NUMTOURNEE
+            AND DETAILDEPOT.NOTYPEDECHET = NUMTYPEDECHET;
+    v_quantite INTEGER := QUANTITE_ENLEVEE_TYPE_TOURNEE(NUMTOURNEE, NUMTYPEDECHET);
+    BEGIN
+       FOR depot IN c_depots
+           LOOP
+               v_quantite := v_quantite - depot.QTE;
+           END LOOP;
+       RETURN v_quantite;
+    END;
