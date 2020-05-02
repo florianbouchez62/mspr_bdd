@@ -9,5 +9,5 @@ Florian Bouchez - Lucas Lemaire - Dylan Rousselle - Fabien Kiecken - Maxime Arbo
 - (1) Mise en place de la nouvelle base de données -> **OK**
 - (1) Regroupement des données sur la nouvelle base -> **OK**
 - Utilisation de la base de données pour la gestion de l'activité -> **OK**
-- Automatisation des actions -> *En cours*
+- Automatisation des actions -> **OK**
 - Administration de la base de données -> *En cours*
