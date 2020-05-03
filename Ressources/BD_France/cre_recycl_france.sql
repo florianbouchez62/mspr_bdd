@@ -125,6 +125,7 @@ create table employe
 (NoEmploye	 number(5) not null,
 Nom		 varchar(50),
 Prenom		 varchar(50),
+Username char(6) UNIQUE,
 dateNaiss	 date,
 dateEmbauche	 date,
 Salaire		 number(8,2),
@@ -134,6 +135,15 @@ constraint PK_employe primary key(Noemploye),
 constraint FK_employe_nofonction foreign key (nofonction) references fonction(nofonction),
 constraint FK_employe_nosite foreign key (nosite) references site(nosite)
 );
+
+-- Trigger empêchant la modification du nom d'utilisateur
+create trigger not_editable_username before update on employe for each row
+declare
+begin
+    if(:new.Username != :old.Username) then
+        raise_application_error(-20001, 'La modification du nom utilisateur est impossible.');
+    end if;
+end;
 
 create table camion
 (NoImmatric	 char(10) not null,
@@ -179,7 +189,7 @@ Siret number(15) not null,
 NoSite number(3) not null,
 constraint PK_demande_non_traitee primary key (Nodemande),
 constraint FK_demande_non_traitee_entreprise foreign key (Siret) references entreprise(Siret),
-constraint FK_demande_nosite foreign key (NoSite) references site(NoSite)
+constraint FK_demande_non_traitee_nosite foreign key (NoSite) references site(NoSite)
 );
 
 

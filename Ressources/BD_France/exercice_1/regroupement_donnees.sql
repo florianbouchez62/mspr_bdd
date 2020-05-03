@@ -64,20 +64,33 @@ END;
 -- > EMPLOYE && TOURNEE && DEMANDE && DETAILDEMANDE && DETAILDEPOT
 DECLARE
     CURSOR c_empl_lille IS
-        SELECT * FROM RLILLE.EMPLOYE;
+        SELECT NOEMPLOYE, NOM, PRENOM, DATENAISS, DATEEMBAUCHE, SALAIRE, EMPLOYE.NOFONCTION, NOMFONCTION
+        FROM RLILLE.EMPLOYE JOIN RLILLE.FONCTION ON EMPLOYE.NOFONCTION = FONCTION.NOFONCTION;
     CURSOR c_empl_paris IS
-        SELECT * FROM RPARIS.EMPLOYE;
+        SELECT NOEMPLOYE, NOM, PRENOM, DATENAISS, DATEEMBAUCHE, SALAIRE, FONCTION
+        FROM RPARIS.EMPLOYE;
     CURSOR unaffected_demande_lille IS
         SELECT * FROM RLILLE.DEMANDE WHERE NOTOURNEE IS NULL;
     CURSOR unaffected_demande_paris IS
         SELECT * FROM RPARIS.DEMANDE WHERE NOTOURNEE IS NULL;
     v_numFonction number;
     v_numCentre number;
+    v_username varchar(6);
 BEGIN
     FOR empl IN c_empl_lille
         LOOP
-            INSERT INTO EMPLOYE (NOEMPLOYE, NOM, PRENOM, DATENAISS, DATEEMBAUCHE, SALAIRE, NOFONCTION, NOSITE)
-            VALUES (SEQ_EMPLOYE.nextval, empl.NOM, empl.PRENOM, empl.DATENAISS, empl.DATEEMBAUCHE, empl.SALAIRE, empl.NOFONCTION, 1);
+            v_username := UPPER(SUBSTR(empl.PRENOM, 1, 1) || SUBSTR(empl.NOM, 1, 3));
+            IF empl.NOMFONCTION = 'directeur' THEN
+                v_username := 'D_' || v_username;
+            ELSIF empl.NOMFONCTION = 'responsable' THEN
+                v_username := 'R_' || v_username;
+            ELSIF empl.NOMFONCTION = 'commercial' OR empl.NOMFONCTION = 'secr�taire' THEN
+                v_username := 'A_' || v_username;
+            ELSE
+                v_username := 'E_' || v_username;
+            END IF;
+            INSERT INTO EMPLOYE (NOEMPLOYE, NOM, PRENOM, USERNAME, DATENAISS, DATEEMBAUCHE, SALAIRE, NOFONCTION, NOSITE)
+            VALUES (SEQ_EMPLOYE.nextval, empl.NOM, empl.PRENOM, v_username, empl.DATENAISS, empl.DATEEMBAUCHE, empl.SALAIRE, empl.NOFONCTION, 1);
 
             FOR t IN (SELECT * FROM RLILLE.TOURNEE WHERE NOEMPLOYE = empl.NOEMPLOYE)
                 LOOP
@@ -112,9 +125,19 @@ BEGIN
 
     FOR empl IN c_empl_paris
         LOOP
+            v_username := UPPER(SUBSTR(empl.PRENOM, 1, 1) || SUBSTR(empl.NOM, 1, 3));
+            IF empl.FONCTION = 'directeur' THEN
+                v_username := 'D_' || v_username;
+            ELSIF empl.FONCTION = 'responsable' THEN
+                v_username := 'R_' || v_username;
+            ELSIF empl.FONCTION = 'commercial' OR empl.FONCTION = 'secr�taire' THEN
+                v_username := 'A_' || v_username;
+            ELSE
+                v_username := 'E_' || v_username;
+            END IF;
             SELECT NOFONCTION INTO v_numFonction FROM FONCTION WHERE NOMFONCTION = empl.FONCTION;
-            INSERT INTO EMPLOYE (NOEMPLOYE, NOM, PRENOM, DATENAISS, DATEEMBAUCHE, SALAIRE, NOFONCTION, NOSITE)
-            VALUES (SEQ_EMPLOYE.nextval, empl.NOM, empl.PRENOM, empl.DATENAISS, empl.DATEEMBAUCHE, empl.SALAIRE, v_numFonction, 2);
+            INSERT INTO EMPLOYE (NOEMPLOYE, NOM, PRENOM, USERNAME, DATENAISS, DATEEMBAUCHE, SALAIRE, NOFONCTION, NOSITE)
+            VALUES (SEQ_EMPLOYE.nextval, empl.NOM, empl.PRENOM, v_username, empl.DATENAISS, empl.DATEEMBAUCHE, empl.SALAIRE, v_numFonction, 2);
             FOR t IN (SELECT * FROM RPARIS.TOURNEE WHERE NOEMPLOYE = empl.NOEMPLOYE)
                 LOOP
                     INSERT INTO TOURNEE (NOTOURNEE, DATETOURNEE, NOIMMATRIC, NOEMPLOYE)
