@@ -11,6 +11,10 @@ drop user rfrance;
 -- Suppression des tables et séquences
 -- ==============
 
+-- /////////////////////////////////////////////////////
+-- / Début des actions à exécuter pour la restauration /
+-- /////////////////////////////////////////////////////
+
 DROP SEQUENCE SEQ_SITE;
 DROP SEQUENCE SEQ_CENTRE;
 DROP SEQUENCE SEQ_DEMANDE;
@@ -59,6 +63,10 @@ DROP FUNCTION QUANTITE_TYPEDECHET_NATIONAL_PERIODE;
 DROP FUNCTION NOMBRE_TOURNEES_DISPONIBLES;
 DROP FUNCTION QUANTITE_ENLEVEE_TYPE_TOURNEE;
 DROP FUNCTION QUANTITE_RESTANTE_A_DEPOSER_TYPE_TOURNEE;
+
+-- ///////////////////////////////////////////////////
+-- / Fin des actions à exécuter pour la restauration /
+-- ///////////////////////////////////////////////////
 
 DROP TRIGGER VERIF_QTE_DEPOSEE;
 DROP TRIGGER NOT_EDITABLE_USERNAME;
