@@ -84,7 +84,7 @@ BEGIN
                 v_username := 'D_' || v_username;
             ELSIF empl.NOMFONCTION = 'responsable' THEN
                 v_username := 'R_' || v_username;
-            ELSIF empl.NOMFONCTION = 'commercial' OR empl.NOMFONCTION = 'secr�taire' THEN
+            ELSIF empl.NOMFONCTION = 'commercial' OR empl.NOMFONCTION = 'secr�taire' OR empl.NOMFONCTION = 'secrétaire' THEN
                 v_username := 'A_' || v_username;
             ELSE
                 v_username := 'E_' || v_username;
@@ -130,7 +130,7 @@ BEGIN
                 v_username := 'D_' || v_username;
             ELSIF empl.FONCTION = 'responsable' THEN
                 v_username := 'R_' || v_username;
-            ELSIF empl.FONCTION = 'commercial' OR empl.FONCTION = 'secr�taire' THEN
+            ELSIF empl.FONCTION = 'commercial' OR empl.FONCTION = 'secr�taire' OR empl.FONCTION = 'secrétaire' THEN
                 v_username := 'A_' || v_username;
             ELSE
                 v_username := 'E_' || v_username;
