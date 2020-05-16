@@ -3,14 +3,9 @@
 Florian Bouchez - Lucas Lemaire - Dylan Rousselle - Fabien Kiecken - Maxime Arbouille
 
 
-## Liste des tâches 
-- Création des bases de données Lille & Paris -> **OK**
-- Importation des données dans les deux bases -> **OK**
-- (1) Mise en place de la nouvelle base de données -> **OK**
-- (1) Regroupement des données sur la nouvelle base -> **OK**
-- Utilisation de la base de données pour la gestion de l'activité -> **OK**
-- Automatisation des actions -> **OK**
-- Administration de la base de données -> *En cours*
-  - Gestion de la sécurité -> **OK**
-  - Observation des éléments (guide) -> *En cours*
-  - Système de sauvegarde / restauration -> **OK**
+## Informations
+
+- Le guide d'observation des éléments de la base de données se situe sous le répertoire `Ressources/Guide_Observation_BDD.pdf`
+- La modélisation UML de la nouvelle base RFRANCE se situe sous le répertoire `Ressources/RECYCL_FRANCE_UML_CONCEPTION.pdf`
+- L'ensemble des exercices réalisés se situent sous le répertoire `Ressources/BD_France/`
+- Le fichier de création de la nouvelle base de données RFRANCE se situe sous le répertoire `Ressources/BD_France/cre_recycl_france.sql`

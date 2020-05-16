@@ -37,7 +37,7 @@ GRANT DATAPUMP_EXP_FULL_DATABASE TO rfrance;
 -- Exécuter la commande suivante pour importer le schéma sauvegardé depuis le dossier /orabackup
 -- (connexion en sysdba requise)
 
--- impdp \"sys/29Epsi1999@localhost:1521/XEPDB1 as sysdba\" DIRECTORY=schemas_backup DUMPFILE=backup_rfrance.dmp
+-- impdp \"sys/passwd@localhost:1521/XEPDB1 as sysdba\" DIRECTORY=schemas_backup DUMPFILE=backup_rfrance.dmp
 -- SCHEMAS=RFRANCE
 
 
