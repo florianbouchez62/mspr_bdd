@@ -13,4 +13,4 @@ Florian Bouchez - Lucas Lemaire - Dylan Rousselle - Fabien Kiecken - Maxime Arbo
 - Administration de la base de données -> *En cours*
   - Gestion de la sécurité -> **OK**
   - Observation des éléments (guide) -> *En cours*
-  - Système de sauvegarde / restauration -> *En cours*
+  - Système de sauvegarde / restauration -> **OK**
